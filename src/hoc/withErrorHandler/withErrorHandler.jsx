@@ -12,12 +12,14 @@ export const withErrorHandler = ( WrappedComponent, axios ) => {
         }
 
         componentWillMount() {
-            this.reqInterceptor = axios.interceptors.request.use(req => req, error => {
+            this.reqInterceptor = axios.interceptors.request.use(req => {
                 this.setState({ error: null });
+                return req;
             });
 
             this.resInterceptor = axios.interceptors.response.use(res => res, error => {
                 this.setState({ error: error });
+                console.log(this.state.error);
             });
         }
 
@@ -32,6 +34,7 @@ export const withErrorHandler = ( WrappedComponent, axios ) => {
         }
 
         render() {
+            console.log('withErrorHandler')
             return (
                 <Auxx>
                     <Modal
