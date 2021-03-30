@@ -11,6 +11,10 @@
 .Input {
     display: block;
 }
+
+.ValidationMessage {
+    color: #c45e38;
+}
 @media (min-width: 600px) {
     .ContactData {
         width: 500px;
